@@ -16,12 +16,12 @@ public class LoginTests {
     DataHelper.AuthInfo authInfo = DataHelper.getAuthInfoTestData();
 
     @AfterAll
-    static void tearDownAll(){
+    static void tearDownAll() {
         cleanDatabase();
     }
 
     @AfterEach
-    void tearDown () {
+    void tearDown() {
         cleanAuthCode();
     }
 
@@ -45,7 +45,7 @@ public class LoginTests {
     }
 
     @Test
-    void getErrorIfLoginExistInBaseAndRandomVerifyCodeTest(){
+    void getErrorIfLoginExistInBaseAndRandomVerifyCodeTest() {
         var verificationPage = loginPage.validLogin(authInfo);
         var verificationCode = DataHelper.generaterRandomCode();
         verificationPage.verify(verificationCode.getCode());

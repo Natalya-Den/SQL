@@ -9,13 +9,13 @@ import lombok.Value;
 import java.util.Locale;
 
 public class DataHelper {
-    private static final Faker FAKER= new Faker(new Locale("en"));
+    private static final Faker FAKER = new Faker(new Locale("en"));
 
     private DataHelper() {
     }
 
     public static AuthInfo getAuthInfoTestData() {
-        return new AuthInfo ("vasya", "qwerty123");
+        return new AuthInfo("vasya", "qwerty123");
     }
 
     private static String generateRandomLogin() {
@@ -31,7 +31,7 @@ public class DataHelper {
     }
 
     public static VerificationCode generaterRandomCode() {
-        return new VerificationCode (FAKER.numerify("######"));
+        return new VerificationCode(FAKER.numerify("######"));
     }
 
     @Value
@@ -43,7 +43,7 @@ public class DataHelper {
     @Data
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class VerificationCode{
+    public static class VerificationCode {
         String code;
     }
 }

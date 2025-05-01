@@ -10,7 +10,7 @@ import java.sql.SQLException;
 public class SQLHelper {
     private static final QueryRunner QUERY_RUNNER = new QueryRunner();
 
-    private SQLHelper(){
+    private SQLHelper() {
     }
 
     private static Connection getConnect() throws SQLException {
@@ -18,16 +18,16 @@ public class SQLHelper {
     }
 
     @SneakyThrows
-    public static String getVerificationCode(){
-        var codeSQL = "SELECT code FROM auth_code ORDER BY created DESC LIMIT 1";
-        try (var connect = getConnect()){
+    public static String getVerificationCode() {
+        var codeSQL = "SELECT code FROM auth_codes ORDER BY created DESC LIMIT 1";
+        try (var connect = getConnect()) {
             return QUERY_RUNNER.query(connect, codeSQL, new ScalarHandler<>());
         }
     }
 
     @SneakyThrows
-    public static void cleanDatabase(){
-        try (var connect = getConnect()){
+    public static void cleanDatabase() {
+        try (var connect = getConnect()) {
             QUERY_RUNNER.execute(connect, "DELETE FROM auth_codes");
             QUERY_RUNNER.execute(connect, "DELETE FROM card_transactions");
             QUERY_RUNNER.execute(connect, "DELETE FROM cards");
@@ -36,8 +36,8 @@ public class SQLHelper {
     }
 
     @SneakyThrows
-    public static void cleanAuthCode(){
-        try (var connect = getConnect()){
+    public static void cleanAuthCode() {
+        try (var connect = getConnect()) {
             QUERY_RUNNER.execute(connect, "DELETE FROM auth_codes");
         }
     }
